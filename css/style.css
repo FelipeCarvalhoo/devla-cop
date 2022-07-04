@@ -1,0 +1,228 @@
+/*Variaveis*/
+:root{
+    --header-color: #000;
+    --h1-color: #394c41;
+    --h2-color: #6e7378;
+    --btn-dark-bg: rgba(23, 26, 32, 0.8); /*0.8 ea transparencia*/
+    --btn-light-bg: rgba(255, 255, 255, 0.65);
+    --btn-dark-color: #fff;
+    --btn-light-color: #000;
+} /*essa variavel foi criada para poder ser usada la embaixo!*/
+
+/*fonts*/
+@font-face {
+    font-family: GothamMedium;
+    src: url(../fonts/GothamMedium.otf)
+    }
+
+    @font-face {
+        font-family: GothanBookRegular;
+        src: url(../fonts/GothamBookRegular.otf);
+    }
+
+body {
+    font-family: GothamMedium, helvetica, arial;
+    font-size: 14px;
+    margin: 0;
+}
+
+/*Header*/
+header ul, li {
+    list-style: none;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    position: fixed; /*com isso o header ira ficar flutuando por cima da imagem*/
+    top: 0;
+    left: 0;
+    right: 0;
+
+}
+
+header .logo {
+    width: 120px;
+    margin-left: 20px;
+}
+
+header .middle ul {
+    display: flex;
+}
+header .middle li {
+    margin: 0 10px;
+}
+
+header .middle a {
+    text-decoration: none;
+    color: var(--header-color);
+    text-transform: uppercase; /*deixa os nome do link tudo maiusculo*/
+}
+
+header .rightside li { 
+    margin: 0 10px;
+
+}
+header .rightside ul {
+    display: flex; 
+}             /*display:flex faz os nomes ul que esta dentro da .rightside ficar um ao lado do outro.*/
+header .rightside a {
+    text-decoration: none;
+    color: var(--header-color)
+    text-transform: uppercase;/*deixa os nomes da propriedade selecionada tudo maiuscula.*/
+}
+
+ header .menu--icon { /*essas configurações e usada para criar o tres pntinhos*/
+    width: 18px;
+    height: 16px;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-around;
+    cursor: pointer; /*com essa ferramenta posso fazer o icone ficar como sendo um link, ao passa o mouse por cima*/
+    margin-right: 5px;
+
+}
+
+ header .menu--icon div { 
+    height: 2px;
+    background-color: var(--header-color);
+}
+
+/*MAIN*/
+main {
+    background-image: url(../images/bg.jpg);
+    background-size: cover; /*vai cobrir toda a tela de acordo com a tela, ela ficara ajustada.*/
+    background-position: center;
+    height: 100vh; 
+    /*por mais que, eu queira que a imagem complete toda a tela ela não ira fazer porque o header tem seu espaço proprio, para isso preciso ir la no header e configura-lo.*/
+
+
+}
+
+/*Main*/
+main .info {
+    height: 45vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+main h1 { 
+    margin: 0;
+    font-size: 40px;
+    font-weight: normal;
+    color: var(--h1-color)
+
+}
+main h2 {
+    margin: 0;
+    size: 14px;
+    font-weight: normal;
+    font-family: 'GothamBook', Helvetica, Arial;
+    color: var(--h2-color)
+}
+
+main h2 a {
+    color: var(--h1-color);
+}
+/*footer*/
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 30px;
+    right: 0;
+
+}
+
+footer .buttons--area {
+    display: flex; /*deita os objetos*/
+    justify-content: center; /*alinha o texto dentro do espaço desejado*/
+
+}
+
+footer .buttons--area a {
+    display: block; /*usado para manipular os tamanhos de linha que geralmente não são manipulados*/
+width: 220px;
+text-align: center;
+text-decoration: none;
+text-transform: uppercase; /*deixa tudo maiusculo*/
+font-size: 12px;
+padding: 15px;
+border-radius: 30px;
+margin: 0 10px; /*as divs se separam com essa configuração, elas estão juntas agora não mais.*/
+}
+
+footer .btn--dark {
+background-color: var(--btn-dark-bg);
+color: var(--btn-dark-color);
+}
+
+footer .btn--light {
+background-color: var(--btn-light-bg);
+color: var(--btn-light-color);
+}
+/*Footer*/
+footer .arrow--area {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px; 
+    height: 30px; /*repare que o heigth do arrow--area e o dobro do height do arrow*/
+
+}
+
+@keyframes arrow { /*arrow e o nome que demos para esse keyframes*/
+    0%{ 
+        margin-top: 0px;
+    }
+    50% { 
+        margin-top: 15px;
+    }         /*isso aqui e para armazenar animações*/
+    100% {
+        margin-top: 0px;
+    }
+}
+
+footer .arrow {
+    height: 15px;
+    animation-name: arrow; /*propriedade do keyframe*/
+    animation-duration: 2s;/*propriedade do keyframe*/
+    animation-iteration-count: infinite;/*propriedade do keyframe*/
+}
+ 
+
+/*Media Queries*/
+@media (max-width:1200px) { /*o max-width vai ficar em 1200x não esqueça do x de pixel*/
+header .middle {
+  display: none; /*display none some com a div*/
+}
+  header .rightside li {
+      display: none;
+}
+ 
+header li.menu {
+   display: block; /*acho que o display block anula a função display none de alguma media queries acima
+   */
+   margin-right: 20px;
+}
+
+
+}
+
+@media (max-width: 600px)
+{
+footer .buttons--area{
+    flex-direction: column; /*fica um abaixo do outro*/
+    align-items: center; /*vai para o meio da tela*/
+}
+footer .buttons--area a {
+    margin: 10px 20px; /*alem das margens veio tambem as laterais por causa
+    dos dois pixels*/
+     width: calc(100vw - 60px); /* calc(100vw - 60px vai modificar
+     os pixels de acordo como o tamanho da div*/
+}
+
+}
